@@ -815,6 +815,32 @@ footer.hf{display:block;padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(
 .stk{margin:14px 0 0 40px;transform:rotate(-5deg)}
 .stk:before{top:-16px;transform:scaleY(-1)}
 }
+
+/* ================= v3 overrides ================= */
+/* hero: one line from 600px up, the O a bit larger than the other capitals */
+.hero h1.pd{font-size:min(calc((100vw - 2 * var(--gut)) / 11.35),200px);line-height:1}
+.pdl{display:block;white-space:nowrap}
+.pdw{display:inline}
+.pdw+.pdw:before{content:" "}
+.po{font-size:1.3em;line-height:.8;vertical-align:baseline}
+.pph{top:.11em}
+@media(max-width:599px){
+.hero h1.pd{font-size:calc((100vw - 2 * var(--gut)) / 5.65);line-height:.95}
+.pdl{white-space:normal}
+.pdw{display:block}
+.pdw+.pdw:before{content:none}
+}
+/* titles: larger, but always a step below the hero line */
+.dsp{font-size:clamp(34px,6.6vw,104px)}
+.dsp.dsp-s{font-size:clamp(30px,5.6vw,88px)}
+#contact .dhd .cx-h{font-size:clamp(36px,5.4vw,84px)}
+@media(min-width:1001px){#contact.cx>.w{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
+/* About photo frame */
+.abw{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.42fr);gap:clamp(24px,4vw,64px);align-items:start}
+.abp{position:relative;margin:0;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 35% 22%,#D9DAD6,#B9BBB6 72%)}
+.abp:before{content:"";position:absolute;inset:0;background:var(--gw);opacity:.35;mix-blend-mode:overlay}
+.abp img{position:relative;display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:900px){.abw{grid-template-columns:1fr}.abp{max-width:420px}}
 </style></head><body>
 <header id="hd"><a class="sig" href="#/">I’m Faezeh Saqaee</a><nav class="dn" aria-label="Primary"><div class="dd" id="dd"><button type="button" class="ddb" id="ddb" aria-expanded="false" aria-controls="ddm">Work<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button><div class="ddm" id="ddm" hidden><ul id="ddl"></ul></div></div><a href="#/" data-s="about">About</a><a href="#/" data-s="contact">Contact</a><a href="#/resume">Resume</a></nav><button type="button" class="hb" id="hb" aria-expanded="false" aria-controls="mm" aria-label="Open menu"><span></span><span></span></button></header><div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Site menu" hidden><div class="mmh"><a class="sig" href="#/">I’m Faezeh Saqaee</a><button type="button" class="mmx" id="mmx" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><nav aria-label="Mobile"><ul class="mml"><li><button type="button" class="mmw" id="mmw" aria-expanded="false" aria-controls="mmc">Work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><ul class="mmc" id="mmc" hidden></ul></li><li><a href="#/" data-s="about">About</a></li><li><a href="#/" data-s="contact">Contact</a></li><li><a href="#/resume">Resume</a></li></ul></nav><p class="mmf"><a href="mailto:faezeh.saqaee@gmail.com">faezeh.saqaee@gmail.com</a></p></div>
 <main id="app"></main>
@@ -1062,7 +1088,7 @@ const rzPage=()=>`<div class="w"><div class="rz"><div class="rzh"><p class="eb">
 const home=()=>`<div class="hero"><div class="hi"><h1 class="pd"><span class="vh">Faezeh Saqaee — Product Designer</span><span class="pdl" aria-hidden="true"><span class="pdw">pr<span class="po">O<span class="pph"><img src="assets/portrait.jpg" alt="" onerror="this.hidden=true"></span></span>duct</span><span class="pdw">designer</span></span></h1>
 <p class="rot" id="rot">I turn intricate systems into intuitive experiences.</p><div class="cta"><a class="btn p" href="#/" data-s="work">View Work</a><a class="btn" href="#/" data-s="about">About Me</a></div></div></div>
 <section id="about" class="hs ab"><div class="w"><div class="dhd"><p class="sn">(01) — Who’s behind the work</p><h2 class="dsp">About</h2><span class="stk" aria-hidden="true">6 yrs in FinTech</span></div>
-<div class="abr"><h3 class="eb">Who I Am</h3><p class="who rv">I’m a Product Designer who believes great work needs focus. Sometimes that means <em>bold choices</em> — like moving from Tehran to Zanjan to find the space to do my best work.</p></div>
+<div class="abr"><h3 class="eb">Who I Am</h3><div class="abw"><p class="who rv">I’m a Product Designer who believes great work needs focus. Sometimes that means <em>bold choices</em> — like moving from Tehran to Zanjan to find the space to do my best work.</p><!-- About photo: drop assets/about.jpg (portrait, ~4:5). Until then a neutral grain fill shows. --><figure class="abp rv"><img src="assets/about.jpg" alt="Faezeh Saqaee" loading="lazy" onerror="this.hidden=true"></figure></div></div>
 <div class="abr full"><h3 class="eb">My Journey</h3><div><ol class="jy rv">${JOURNEY.map(([y,t,d,x,g])=>`<li><span class="jyy">${y}</span><div class="jyb"><b>${t}</b><p>${d}</p><small>${x}</small><span class="jyt">${g}</span></div></li>`).join('')}</ol><div class="jyf rv"><p>FinTech · Complex Products · Design Systems</p><a class="btn bk" href="#/resume">View Resume <span aria-hidden="true">→</span></a></div></div></div>
 <!-- TODO(What I Do): placeholder — replace the .todo block below with the final copy. Previous About copy, for reference: "I’ve always designed products — first physical, now digital. With 6 years of experience in Product Design, I work across discovery, UX, UI, and delivery, turning complex systems into clear, usable products." -->
 <div class="abr"><h3 class="eb">What I Do</h3><div class="todo"><b>What I Do</b>Text coming soon.</div></div></div></section>
