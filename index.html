@@ -741,7 +741,7 @@ html.snap.snapm{scroll-snap-type:y mandatory}
 .sldm{margin-top:14px;font-size:17px}
 .sldc{margin-top:16px;padding:11px 20px;font-size:13px}
 }
-@media(max-height:560px) and (max-width:820px){.sldi{display:none}}
+
 @media(prefers-reduced-motion:reduce){.sld .sldi,.sld .sldt>*{transition:none!important;transform:none}}
 
 /* ---- Top screens (placeholder) ---- */
@@ -909,20 +909,6 @@ footer.hf{display:block;padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(
 .abp.rv{transform:rotate(4deg) translateY(16px)}.abp.rv.in{transform:rotate(4deg)}
 @media(max-width:900px){.abh{grid-template-columns:minmax(0,1fr) auto;column-gap:20px}.abh>.dhd{grid-column:1}.abh>.abp{grid-column:2;width:clamp(104px,26vw,170px);padding:6px 6px 22px;font-size:110px;margin:0 4px 0 0}.abr>.who{grid-column:auto}}
 
-/* journey as sticky notes with breathing room (previous timeline kept in git) */
-.ab .jy{--jg:0px;gap:clamp(24px,3vw,44px);grid-template-columns:repeat(4,minmax(0,1fr));padding-top:14px}
-.ab .jy li,.ab .jy li:last-child{position:relative;margin:0;padding:clamp(20px,2vw,28px) clamp(18px,1.8vw,26px) clamp(22px,2.2vw,30px);border:0;background:var(--nc,#FFF3C9);border-radius:2px 2px 4px 14px/2px 2px 4px 6px;box-shadow:0 1px 1px rgba(20,22,19,.06),0 12px 24px -6px rgba(20,22,19,.16);transform:rotate(var(--r,0deg))}
-.ab .jy li:nth-child(1){--r:-1.6deg;--nc:#FFF3C9}.ab .jy li:nth-child(2){--r:1.2deg;--nc:#FFEBD8}.ab .jy li:nth-child(3){--r:-.8deg;--nc:#FFF3C9}.ab .jy li:nth-child(4){--r:1.8deg;--nc:#FFE1C7}
-.ab .jy li:before{content:"";position:absolute;top:-11px;left:50%;width:74px;height:22px;background:rgba(255,255,255,.62);box-shadow:0 1px 2px rgba(20,22,19,.08);transform:translateX(-50%) rotate(-3deg)}
-.ab .jy li:after,.ab .jy .jyb:before,.ab .jy .jyb:after,.ab .jy .jyy:before{display:none!important}
-.ab .jy .jyy{position:static;margin:0;padding:0 0 14px;font-size:clamp(26px,2.4vw,38px)}
-.ab .jy li .jyb,.ab .jy li:not(:last-child) .jyb{margin:0;padding:0;border:0}
-.ab .jy .jyb p{color:#2b2f2a}
-.ab .jy .jyt{background:transparent;color:var(--ink)}
-.ab .jy li:last-child .jyt{background:var(--ink);color:#fff}
-@media(max-width:1000px){.ab .jy{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}}
-@media(max-width:600px){.ab .jy{grid-template-columns:1fr;row-gap:36px}}
-
 /* contact icons */
 .ci{width:18px;height:18px;flex:none;fill:none;stroke:var(--o);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cxl{display:inline-flex;align-items:center;gap:10px}
@@ -974,6 +960,27 @@ footer.hf{display:block;padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(
 .lbx{position:absolute;top:clamp(12px,2vh,22px);right:clamp(12px,2vw,28px)}
 @media(max-width:600px){.lb{grid-template-columns:1fr 1fr;grid-template-rows:1fr auto}.lbf{grid-column:1/-1;grid-row:1}.lbp{grid-row:2;justify-self:end}.lbn{grid-row:2;justify-self:start}}
 @media(prefers-reduced-motion:reduce){.po.sw,.snx i,.lb{animation:none}.pin{transition:none}}
+
+/* ================= v6 overrides ================= */
+/* journey timeline with more room */
+.ab .jy{--jg:clamp(28px,3.6vw,60px);padding-top:clamp(8px,1vw,16px)}
+.ab .jyy{padding-bottom:26px}
+.ab .jyb{padding-top:30px}
+.ab .jyb p{margin-top:12px;line-height:1.65}
+.ab .jyb small{margin-top:16px}
+.ab .jyt{margin-top:18px}
+.ab .jyf{margin-top:clamp(48px,5vw,80px)}
+@media(max-width:900px){.ab .jy li{padding-bottom:48px}.ab .jyb{padding-top:6px}.ab .jyy{padding-bottom:12px}}
+/* the exit snap point after the cases is now the contact section */
+#contact{scroll-snap-align:start}
+/* cases: text left, image right */
+@media(min-width:821px){.sldw{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}.sldi{order:2}}
+/* mobile: image always shown, a little smaller on short screens */
+@media(max-width:820px){.sldi img,.sldi .slot{max-height:32svh}}
+@media(max-width:820px) and (max-height:620px){.sldi img,.sldi .slot{max-height:26svh}.sldd{font-size:14px}.sldc{margin-top:12px}.sldm{margin-top:10px}}
+/* dark navigation over the case stage */
+#hd.dk{color:#fff;background:rgba(15,17,15,.92);border-bottom-color:rgba(255,255,255,.08)}
+#hd.dk nav a:hover,#hd.dk .ddb:hover{color:var(--o)}
 </style></head><body>
 <header id="hd"><a class="sig" href="#/">I’m Faezeh Saqaee</a><nav class="dn" aria-label="Primary"><div class="dd" id="dd"><button type="button" class="ddb" id="ddb" aria-expanded="false" aria-controls="ddm">Work<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button><div class="ddm" id="ddm" hidden><ul id="ddl"></ul></div></div><a href="#/" data-s="about">About</a><a href="#/" data-s="contact">Contact</a><a href="#/resume">Resume</a></nav><button type="button" class="hb" id="hb" aria-expanded="false" aria-controls="mm" aria-label="Open menu"><span></span><span></span></button></header><div class="mm" id="mm" role="dialog" aria-modal="true" aria-label="Site menu" hidden><div class="mmh"><a class="sig" href="#/">I’m Faezeh Saqaee</a><button type="button" class="mmx" id="mmx" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><nav aria-label="Mobile"><ul class="mml"><li><button type="button" class="mmw" id="mmw" aria-expanded="false" aria-controls="mmc">Work<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><ul class="mmc" id="mmc" hidden></ul></li><li><a href="#/" data-s="about">About</a></li><li><a href="#/" data-s="contact">Contact</a></li><li><a href="#/resume">Resume</a></li></ul></nav><p class="mmf"><a href="mailto:faezeh.saqaee@gmail.com">faezeh.saqaee@gmail.com</a></p></div>
 <main id="app"></main><div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screen viewer" hidden><button type="button" class="lbx" id="lbx" aria-label="Close viewer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button type="button" class="lbb lbp" id="lbp" aria-label="Previous screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><figure class="lbf"><div class="lbi" id="lbi"></div><figcaption><span id="lbc"></span><b id="lbk"></b></figcaption></figure><button type="button" class="lbb lbn" id="lbn" aria-label="Next screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
@@ -1177,11 +1184,11 @@ const snapSync=()=>document.documentElement.classList.toggle('snapm',slIn&&Date.
 const snapOff=ms=>{snapHold=Date.now()+ms;snapSync();setTimeout(snapSync,ms+30)};
 function initHome(){const de=document.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;[SNAPIO,SLIO,SEENIO].forEach(o=>o&&o.disconnect());slIn=false;
 const hk=location.hash.replace(/^#\/?(work\/)?/,'');document.querySelectorAll('[data-nk]').forEach(a=>a.dataset.nk===hk?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
-const sls=$('#app .sls');de.classList.toggle('snap',!!sls);if(!sls){de.classList.remove('snapm');SNAPCK=()=>{};return}
+const sls=$('#app .sls');de.classList.toggle('snap',!!sls);if(!sls){de.classList.remove('snapm');$('#hd').classList.remove('dk');SNAPCK=()=>{};return}
 const sl=[...sls.querySelectorAll('.sld')],mk=[...sls.querySelectorAll('.snp')],num=sls.querySelector('.spn b'),dots=[...sls.querySelectorAll('.spg button')];let cur=0;
 const go=i=>mk[i].scrollIntoView({behavior:rm?'auto':'smooth',block:'start'});
 const setA=i=>{if(i===cur)return;cur=i;sl.forEach((x,j)=>x.classList.toggle('on',j===i));num.textContent=String(i+1).padStart(2,'0');const nx=sls.querySelector('.snx span');nx&&(nx.textContent=i<sl.length-1?'Scroll for the next case':'Keep scrolling for more');dots.forEach((d,j)=>j===i?d.setAttribute('aria-current','step'):d.removeAttribute('aria-current'))};
-SNAPCK=()=>{if(!sls.isConnected)return;const r=sls.getBoundingClientRect(),st=mk[1]?mk[1].offsetTop:innerHeight,v=r.top<=2&&r.bottom>=st-2;if(v!==slIn){slIn=v;snapSync()}setA(Math.max(0,Math.min(sl.length-1,Math.round(-r.top/st))))};SNAPCK();
+SNAPCK=()=>{if(!sls.isConnected){$('#hd').classList.remove('dk');return}const r=sls.getBoundingClientRect();$('#hd').classList.toggle('dk',r.top<=36&&r.bottom>110);const st=mk[1]?mk[1].offsetTop:innerHeight,v=r.top<=2&&r.bottom>=st-2;if(v!==slIn){slIn=v;snapSync()}setA(Math.max(0,Math.min(sl.length-1,Math.round(-r.top/st))))};SNAPCK();
 dots.forEach((d,i)=>d.onclick=()=>go(i));
 sl.forEach((x,i)=>x.addEventListener('focusin',()=>{if(cur!==i)go(i)}))}
 
@@ -1242,13 +1249,10 @@ const home=()=>`<div class="hero"><div class="hi"><h1 class="pd"><span class="vh
 <div class="abr full"><h3 class="eb">My Journey</h3><div><ol class="jy rv">${JOURNEY.map(([y,t,d,x,g])=>`<li><span class="jyy">${y}</span><div class="jyb"><b>${t}</b><p>${d}</p><small>${x}</small><span class="jyt">${g}</span></div></li>`).join('')}</ol><div class="jyf rv"><p>FinTech · Complex Products · Design Systems</p><a class="btn bk" href="#/resume">View Resume <span aria-hidden="true">→</span></a></div></div></div>
 <!-- TODO(What I Do): placeholder — replace the .todo block below with the final copy. Previous About copy, for reference: "I’ve always designed products — first physical, now digital. With 6 years of experience in Product Design, I work across discovery, UX, UI, and delivery, turning complex systems into clear, usable products." -->
 <div class="abr"><h3 class="eb">What I Do</h3><div class="todo"><b>What I Do</b>Text coming soon.</div></div></div></section>
-<section id="contact" class="hs cx"><div class="w"><div class="dhd"><p class="sn">(02) — Ready to start?</p><h2 class="cx-h">Let’s talk</h2><span class="stk stk-k" aria-hidden="true"><span>open to remote!</span></span></div><div class="cx-g">${cxTiles()}</div><span class="vh" id="cxlive" aria-live="polite"></span></div></section>
-<section id="work" class="wk"><div class="w wkh"><div class="dhd"><p class="sn">(03) — Case studies</p><h2 class="dsp">Selected work</h2><span class="stk" aria-hidden="true"><span>0→1 and scale</span></span></div><p class="wkl">Designing investment products from 0→1 and scaling them for 500K+ registered users.</p></div>
+<section id="work" class="wk"><div class="w wkh"><div class="dhd"><p class="sn">(02) — Case studies</p><h2 class="dsp">Selected work</h2><span class="stk" aria-hidden="true"><span>0→1 and scale</span></span></div><p class="wkl">Designing investment products from 0→1 and scaling them for 500K+ registered users.</p></div>
 <div class="sls" style="--n:${CARDS.length}">${CARDS.map((_,i)=>`<span class="snp" id="case-${i+1}" style="top:calc(${i} * 100vh);top:calc(${i} * 100svh)"></span>`).join('')}<div class="stg">${CARDS.map(slide).join('')}
 <p class="snx" aria-hidden="true"><span>Scroll for the next case</span> <i>↓</i></p><nav class="spg" aria-label="Case studies"><p class="spn"><b>01</b> / ${String(CARDS.length).padStart(2,'0')}</p><ul>${CARDS.map(([k],i)=>`<li><button type="button" aria-label="Go to case ${i+1}: ${C[k].t}"${i?'':' aria-current="step"'}></button></li>`).join('')}</ul></nav></div></div></section>
-<section id="screens" class="hs scn"><div class="w"><div class="dhd"><p class="sn">(04) — Details</p><h2 class="dsp dsp-s">More screens worth seeing</h2></div>
-<!-- TODO(Top Screens): add your screens to the SHOTS list in the script (src + caption). Empty entries show a grey placeholder. -->
-<div class="wall">${SHOTS.map((x,i)=>`<button type="button" class="pin" data-shot="${i}" aria-label="Open screen ${i+1}${x.c?`: ${x.c}`:''}"><span class="pinp">${x.s?`<img src="${x.s}" alt="" loading="lazy">`:''}</span><span class="pinc">${x.c||`Screen ${String(i+1).padStart(2,'0')}`}</span></button>`).join('')}</div></div></section>
+<section id="contact" class="hs cx"><div class="w"><div class="dhd"><p class="sn">(03) — Ready to start?</p><h2 class="cx-h">Let’s talk</h2><span class="stk stk-k" aria-hidden="true"><span>open to remote!</span></span></div><div class="cx-g">${cxTiles()}</div><span class="vh" id="cxlive" aria-live="polite"></span></div></section>
 <footer class="hf"><div class="w hfw"><a class="sig" href="#/">Faezeh Saqaee</a><nav aria-label="Footer"><a href="#/" data-s="about">About</a><a href="#/" data-s="contact">Contact</a><a href="#/" data-s="work">Work</a><a href="#/resume">Resume</a><a href="${LI}" target="_blank" rel="noopener noreferrer">LinkedIn${NT}</a></nav><small>© ${new Date().getFullYear()} Faezeh Saqaee · Product Designer</small></div></footer>`;
 const cs=k=>{const c=C[k],i=ORD.indexOf(k),nk=ORD[i+1],nc=nk&&C[nk];return `<div class="ch"><div class="w"><p class="tags">${c.n} — ${c.tags}</p><h1>${c.t}</h1>${c.d?c.d.map((x,k)=>`<p class="${k?'intro2':'intro'}">${x}</p>`).join(''):`<p class="intro">${c.i}</p>`}${k==='design-system'?'':`<div class="hslot rv">${slot(k,'hero',c.t)}</div>`}${c.m.length?`<dl class="meta">${c.m.map(x=>`<div><dt>${x[0]}</dt><dd>${x[1]}</dd></div>`).join('')}</dl>`:''}</div></div><div class="w">${c.b()}<div class="nx">${nc?`<p class="eb">Next Case</p><a href="#/work/${nk}" style="text-decoration:none"><h2>${nc.t} →</h2></a><p style="color:var(--st);max-width:34em">${nc.i}</p>`:''}<p style="margin-top:30px"><a class="lk" href="#/" data-s="work">← Back to Work</a></p></div></div>${ccBlock()}`};
 let pend=null,tm,tt,intro0=0;
